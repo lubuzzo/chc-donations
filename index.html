@@ -3,8 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Chaincoin is for global payments with private secure transactions backed by one of the largest community networks in digital currency">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Donation Tracker - Chaincoin</title>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="https://www.chaincoin.org/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://www.chaincoin.org/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://www.chaincoin.org/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://www.chaincoin.org/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://www.chaincoin.org/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://www.chaincoin.org/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://www.chaincoin.org/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://www.chaincoin.org/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.chaincoin.org/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.chaincoin.org/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://www.chaincoin.org/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.chaincoin.org/icons/favicon-16x16.png">
+    <link rel="manifest" href="https://www.chaincoin.org/icons/manifest.json">
+    <meta name="msapplication-TileColor" content="#27b463">
+    <meta name="msapplication-TileImage" content="https://www.chaincoin.org/icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#27b463">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -20,12 +39,20 @@
       h1 {
         margin: 0px;
       }
+      .header .navbar-default {
+        padding: 0px;
+      }
+
+      .navbar-header {
+        float: left;
+      }
     </style>
 
     <script>
 
     function tracker() {
       btcaddress = '3AHt4fYTo7gWwmYa6s9ayLECUhUkDLfFUU';
+      $("#proposal-link").prop('href', 'https://www.blockchain.com/btc/address/'+btcaddress)
         $.ajax({
           url: 'https://insight.bitpay.com/api/addr/'+btcaddress+'/balance',
           type: 'GET',
@@ -44,6 +71,9 @@
             $("#received").html(value + ' BTC / '+need+' BTC');
             if (percent >= 100)
               $("#address").html('We got!');
+            else
+              $("#address").html('Contribute BTC: <b>'+btcaddress+'</b>');
+
           },
         });
 
@@ -80,7 +110,7 @@
                 <h2 class="panel-title text-center">Goals</h2>
               </div>
               <div class="panel-body">
-                <a href="https://masternodes.online/" target="_blank" class="list-group-item">
+                <a href="https://masternodes.online/" target="_blank" class="list-group-item" id="proposal-link">
                   <h2 style="float:left;margin-right:8px;">#1</h2><b>Relisted on MNO</b>
                   <div class="progress">
                     <div class="progress-bar progress-bar-striped text-dark" role="progressbar" style="width: 50%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" id="progress-bar">this is a fake number
