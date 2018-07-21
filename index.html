@@ -51,7 +51,7 @@
     <script type="text/javascript">
 
     function tracker() {
-      btcaddress = '3AHt4fYTo7gWwmYa6s9ayLECUhUkDLfFUU';
+      btcaddress = '39cfCLgq5YqHKgzBCnBEbLJvza5GnLVRWn';
       $("#proposal-link").prop('href', 'https://www.blockchain.com/btc/address/'+btcaddress)
         $.ajax({
           url: 'https://insight.bitpay.com/api/addr/'+btcaddress+'/balance',
@@ -60,7 +60,7 @@
           success: function(data) {
             //console.log(data);
             value = (data / 100000000);
-            need = 250;
+            need = 0.1;
             percent = (value/need)*100;
 
             if (percent > 100)
