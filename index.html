@@ -39,8 +39,9 @@
       h1 {
         margin: 0px;
       }
-      .header .navbar-default {
-        padding: 0px;
+      header .navbar-default {
+        padding: 0px !important;
+        min-height: 0px !important;
       }
 
       .navbar-header {
@@ -91,9 +92,7 @@
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="{{ .Site.BaseURL }}">
-              <img src="https://www.chaincoin.org/img/logo.png" alt="Chaincoin Logo">
-            </a>
+            <img src="https://www.chaincoin.org/img/logo.png" alt="Chaincoin Logo">
           </div>
           <h1 class="text-center">Donation Tracker</h1>
           </div>
