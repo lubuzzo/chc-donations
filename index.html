@@ -16,7 +16,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="https://www.chaincoin.org/icons/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="https://www.chaincoin.org/icons/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://www.chaincoin.org/icons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://www.chaincoin.org/icons/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://www.chaincoin.org/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="https://www.chaincoin.org/icons/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://www.chaincoin.org/icons/favicon-16x16.png">
@@ -39,9 +39,16 @@
       h1 {
         margin: 0px;
       }
-      header .navbar-default {
-        padding: 0px !important;
-        min-height: 0px !important;
+      @media (min-width: 768px) {
+        header .navbar-default {
+          padding: 0px !important;
+          min-height: 0px !important;
+        }
+      }
+      @media (max-width: 768px) {
+        header .navbar-default {
+          padding: 15px !important;
+        }
       }
 
       .navbar-header {
@@ -116,6 +123,7 @@
                     </div>
                   </div> <span id="received"><b>0 BTC /  0.1 BTC</b></span>
                   <span style="float:right; font-size:10px;" id="address">Contribute BTC: wait a little more to see the address</span>
+                  <p style="clear: both"></p>
                 </a>
               </div>
             </div>
