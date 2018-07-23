@@ -58,37 +58,34 @@
 
     <script type="text/javascript">
 
-    function tracker() {
-      btcaddress = '39cfCLgq5YqHKgzBCnBEbLJvza5GnLVRWn';
-      $("#proposal-link").prop('href', 'https://www.blockchain.com/btc/address/'+btcaddress)
+    function tracker(bitcoin, link, amount, progress, received, address) {
+      $("#"+link+"").prop('href', 'https://www.blockchain.com/btc/address/'+bitcoin)
         $.ajax({
-          url: 'https://insight.bitpay.com/api/addr/'+btcaddress+'/balance',
+          url: 'https://insight.bitpay.com/api/addr/'+bitcoin+'/balance',
           type: 'GET',
           crossDomain: true,
           success: function(data) {
-            //console.log(data);
             value = (data / 100000000);
-            need = 0.1;
+            need = amount;
             percent = (value/need)*100;
 
             if (percent > 100)
               percent = 100;
-            //console.log(value);
-            $("#progress-bar").css('width', percent + '%');
-            $("#progress-bar").html(percent + '%');
-            $("#received").html(value + ' BTC / '+need+' BTC');
+            $("#"+progress+"").css('width', percent.toFixed(2) + '%');
+            $("#"+progress+"").html(percent.toFixed(2) + '%');
+            $("#"+received+"").html(value + ' BTC / '+need+' BTC');
             if (percent >= 100)
-              $("#address").html('We got!');
+              $("#"+address+"").html('We got!');
             else
-              $("#address").html('Contribute BTC: <b>'+btcaddress+'</b>');
-
+              $("#"+address+"").html('Contribute BTC: <b>'+bitcoin+'</b>');
           },
         });
-
       }
 
+
       $(document).ready(function(){
-        tracker();
+        tracker('39cfCLgq5YqHKgzBCnBEbLJvza5GnLVRWn', 'proposal-link', '0.1', 'progress-bar', 'received', 'address');
+        tracker('3AbuChij4ZFvNxoCXNSzijvywxH87LBURy', 'proposal-link2', '0.1', 'progress-bar2', 'received2', 'address2');
       });
     </script>
 
@@ -116,16 +113,29 @@
                 <h2 class="panel-title text-center">Goals</h2>
               </div>
               <div class="panel-body">
-                <a href="https://masternodes.online/" target="_blank" class="list-group-item" id="proposal-link">
-                  <h2 style="float:left;margin-right:8px;">#1</h2><b>To Relist on https://masternodes.online</b>
+                <a href="https://masternodes.pro/" target="_blank" class="list-group-item" id="proposal-link2">
+                  <h2 style="float:left;margin-right:8px;">#2</h2><b>Maintain Lisiting on https://masternodes.pro</b>
                   <div class="progress">
-                    <div class="progress-bar progress-bar-striped text-dark" role="progressbar" style="width: 100%" id="progress-bar">Loading
+                    <div class="progress-bar progress-bar-striped text-dark" style="width: 100%" id="progress-bar2">Loading
+                    </div>
+                  </div> <span id="received2"><b>0 BTC /  0.1 BTC</b></span>
+                  <span style="float:right; font-size:10px;" id="address2">Contribute BTC: wait a little more to see the address</span>
+                  <p style="clear: both"></p>
+                </a>
+              </div>
+
+              <div class="panel-body">
+                <a href="https://masternodes.online/" target="_blank" class="list-group-item" id="proposal-link">
+                  <h2 style="float:left;margin-right:8px;">#1</h2><b>To Relist on https://masternodes.online/</b>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped text-dark" style="width: 100%" id="progress-bar">Loading
                     </div>
                   </div> <span id="received"><b>0 BTC /  0.1 BTC</b></span>
                   <span style="float:right; font-size:10px;" id="address">Contribute BTC: wait a little more to see the address</span>
                   <p style="clear: both"></p>
                 </a>
               </div>
+
             </div>
           </div>
 
